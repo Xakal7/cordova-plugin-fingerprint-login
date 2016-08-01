@@ -1,4 +1,4 @@
-package com.susanne.fingerprint.SamsungPass
+package com.susanne.fingerprint.SamsungPass;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaArgs;
@@ -119,7 +119,7 @@ public class SamsungPass extends CordovaPlugin {
             for (int i = 0; i < mList.size(); i++) {
                 int index = mList.keyAt(i);
                 String name = mList.get(index);
-                fingerprints = "Index: " + index " Name: " + name + ",";
+                fingerprints = "Index: " + index + " Name: " + name + ",";
             }
             callbackContext.success(fingerprints);
         }
@@ -128,7 +128,7 @@ public class SamsungPass extends CordovaPlugin {
 	
 	private void startIdentify(JSONArray args, CallbackContext callbackContext) {
         Log.i(TAG, "Method: startIdentify");
-        private SpassFingerprint.IdentifyListener mIdentifyListenerDialog = new SpassFingerprint.IdentifyListener() {
+        SpassFingerprint.IdentifyListener mIdentifyListenerDialog = new SpassFingerprint.IdentifyListener() {
         @Override
         public void onFinished(int eventStatus) {
             Log.i("identify finished : reason =" + getEventStatusName(eventStatus));
@@ -173,7 +173,7 @@ public class SamsungPass extends CordovaPlugin {
         }
     };
 
-    mSpassFingerprint.startIdentifyWithDialog(mContext, mIdentifyListenerDialog, false)
+    mSpassFingerprint.startIdentifyWithDialog(mContext, mIdentifyListenerDialog, false);
 
 
 	}

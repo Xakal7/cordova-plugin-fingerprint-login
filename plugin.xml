@@ -22,10 +22,11 @@
   <js-module src="www/TouchID.js" name="TouchID">
     <clobbers target="window.plugins.touchid" />
   </js-module>
+    <!--
   <js-module src="www/SamsungPass.js" name="SamsungPass">
 	<clobbers target="window.plugins.SamsungPass" />
   </js-module>
-  
+  -->
   <!-- ios -->
   <platform name="ios">
     <config-file target="config.xml" parent="/*">
@@ -40,8 +41,9 @@
     <header-file src="src/ios/TouchID.h"/>
     <source-file src="src/ios/TouchID.m"/>
   </platform>
-  
+
   <!-- Android Samsung -->
+    <!--
   <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="SamsungPass">
@@ -55,5 +57,5 @@
         <source-file src="src/android/jars/pass-v1.2.1.jar" target-dir="libs/" />
         <source-file src="src/android/jars/sdk-v1.0.0.jar" target-dir="libs/" />
     </platform>
-
+-->
 </plugin>

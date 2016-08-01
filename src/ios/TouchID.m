@@ -21,7 +21,7 @@ NSString *keychainItemServiceName;
     NSError *error = nil;
     LAContext *laContext = [[LAContext alloc] init];
 
-    if ([laContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
+    if ([laContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
       [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK]
                                   callbackId:command.callbackId];
     } else {
@@ -40,7 +40,7 @@ NSString *keychainItemServiceName;
 
     // we expect the dev to have checked 'isAvailable' already so this should not return an error,
     // we do however need to run canEvaluatePolicy here in order to get a non-nil evaluatedPolicyDomainState
-    if (![laContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
+    if (![laContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
       [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]] callbackId:command.callbackId];
       return;
     }
@@ -146,7 +146,7 @@ NSString *keychainItemServiceName;
     NSError *error = nil;
     LAContext *laContext = [[LAContext alloc] init];
 
-    if (![laContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
+    if (![laContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
       [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]]
                                   callbackId:callbackId];
       return;
@@ -161,7 +161,7 @@ NSString *keychainItemServiceName;
       laContext.localizedFallbackTitle = enterPasswordLabel;
     }
 
-    [laContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:message reply:^(BOOL authOK, NSError *error) {
+    [laContext evaluatePolicy:LAPolicyDeviceOwnerAuthentication localizedReason:message reply:^(BOOL authOK, NSError *error) {
       if (authOK) {
         [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK]
                                     callbackId:callbackId];
