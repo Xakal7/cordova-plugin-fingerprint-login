@@ -1,8 +1,9 @@
-cordova.define("window.plugins.touchid", function(require, exports, module){
-  var exec = require("cordova/exec");
 
-  function TouchID() {
-  }
+var exec = require("cordova/exec");
+
+ var TouchID = function () {
+    this.name = "TouchID";
+};
 
   TouchID.prototype.isAvailable = function (successCallback, errorCallback) {
     exec(successCallback, errorCallback, "TouchID", "isAvailable", []);
@@ -24,17 +25,4 @@ cordova.define("window.plugins.touchid", function(require, exports, module){
     exec(successCallback, errorCallback, "TouchID", "verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel", [message, enterPasswordLabel]);
   };
 
-  TouchID.install = function () {
-     if (!window.plugins) {
-       window.plugins = {};
-    }
-  //
-     window.plugins.touchid = new TouchID();
-     return window.plugins.touchid;
-   };
-
-  var touchId = new TouchID();
-  module.exports = touchId;
-  cordova.addConstructor(TouchID.install);
-
-});
+module.exports = new TouchID();
