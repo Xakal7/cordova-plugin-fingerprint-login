@@ -24,17 +24,17 @@ cordova.define("window.plugins.touchid", function(require, exports, module){
     exec(successCallback, errorCallback, "TouchID", "verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel", [message, enterPasswordLabel]);
   };
 
-  // TouchID.install = function () {
-  //   if (!window.plugins) {
-  //     window.plugins = {};
-  //   }
+  TouchID.install = function () {
+     if (!window.plugins) {
+       window.plugins = {};
+    }
   //
-  //   window.plugins.touchid = new TouchID();
-  //   return window.plugins.touchid;
-  // };
+     window.plugins.touchid = new TouchID();
+     return window.plugins.touchid;
+   };
 
   var touchId = new TouchID();
   module.exports = touchId;
-  //cordova.addConstructor(TouchID.install);
+  cordova.addConstructor(TouchID.install);
 
 });
